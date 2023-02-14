@@ -1,2 +1,2 @@
 #!/bin/bash
-printenv
+0x03 shell
