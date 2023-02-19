@@ -1,2 +1,2 @@
 #!/bin/bash
-cat | cut -d' ' -f1 | paste -s -d' '
+cat | cut -d' ' -f1 | paste -s -d' ' | tr [a-z] [A-Z]
