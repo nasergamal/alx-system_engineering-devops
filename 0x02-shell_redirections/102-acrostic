@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -Eo '^[^ ]+' | tr "\n" " "
+cat | cut -d' ' -f1 | paste -s -d' '
