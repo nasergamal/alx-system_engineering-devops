@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#print files in current directory excluding the 1st dash and what preceed it
+for i in *
+do
+	echo "${i##*-}"
+done

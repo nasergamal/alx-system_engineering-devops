@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#sort apache file content basedbon recurrence if ip
+fil=apache-access.log
+awk '{print $1,$9}' $fil | sort | uniq -c | sort -rn

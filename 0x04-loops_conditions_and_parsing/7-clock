@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#print minutes and hours
+i=1
+h=0
+while [ $h -lt 13 ]
+do 
+	if [ $i = 1 ]
+	then
+		echo Hour: $h
+	fi
+	if [ $i = 60 ]
+	then
+		(( i = 0 ))
+		(( h++ ))
+	else
+	       echo $i
+	fi
+	(( i++ ))
+done
