@@ -1,0 +1,4 @@
+# configure host to not use password auth and use private key school
+Host 3.94.185.113
+   PasswordAuthentication no
+   IdentityFile ~/.ssh/school
