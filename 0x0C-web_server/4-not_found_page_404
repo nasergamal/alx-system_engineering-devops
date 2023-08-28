@@ -9,7 +9,7 @@ new_link="server_name _;\n\trewrite ^\/redirect_me http:\/\/www.nassera.tech per
 sudo sed -i "s/server_name _;/$new_link/" /etc/nginx/sites-available/default
 
 echo "Ceci n'est pas une page" > "/var/www/html/custom_404.html"
-err="\n\terror_page 404 \/custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot \/var\/www\/html\/custom_404.html;\n\t\tinternal;\n}"
+err="\n\terror_page 404 \/custom_404.html;"
 sudo sed -i "24i\\$err" /etc/nginx/sites-available/default
 
 sudo service nginx restart
