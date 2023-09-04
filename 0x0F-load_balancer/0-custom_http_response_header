@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# confiugre custom header
+
+sudo apt-get update
+sudo apt-get -y install nginx
+
+echo 'Hello World!' > '/var/www/html/index.html'
+new_link="server_name _;\n\trewrite ^\/redirect_me http:\/\/www.nassera.tech permanent;"
+sudo sed -i "s/server_name _;/$new_link/" /etc/nginx/sites-available/default
+
+echo "Ceci n'est pas une page" > "/var/www/html/custom_404.html"
+err="\n\terror_page 404 \/custom_404.html;"
+sudo sed -i "24i\\$err" /etc/nginx/sites-available/default
+
+new_header="\t\tadd_header X-Served-By \"$(hostname)\";"
+sudo sed -i "/location \/ {/a \\$new_header" /etc/nginx/sites-available/default
+sudo service nginx restart
