@@ -3,26 +3,18 @@ include stdlib
 
 exec { 'one nginx right away':
   command  => 'sudo apt-get update; sudo apt-get -y install nginx',
-  provider => shell
+  provider => shell,
+  before => File_line['who are you']
 }
 
-file { '/var/www/html/index.html':
-  content => 'Hello World!'
-}
-
-file_line { 'where am i':
+file_line { 'who are you':
   path  => '/etc/nginx/sites-available/default',
-  line  => "\nserver_name _;\n\trewrite ^/redirect_me http://www.nassera.tech permanent;",
-  match => 'server_name _;',
-}
-
-exec { 'who are you':
-  path  => '/etc/nginx/sites-available/default',
-  line  => "listen [::]:80 default_server;\n\tadd_header X-Served-By \"${hostname}\";",
-  match => 'listen [::]:80 default_server;',
+  line  => "\tlocation / {\n\t\tadd_header X-Served-By \"${hostname}\";",
+  match => "^\tlocation / {",
+  before => Exec['restart']
 }
 
 exec {'restart':
-  command  => 'sudo service nginx restart',
+  command  => '/usr/sbin/service nginx restart',
   provider => shell
 }
