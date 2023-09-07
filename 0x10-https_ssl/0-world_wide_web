@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# get ip for subdomain
+
+sds="www lb-01 web-01 web-02"
+conf () {
+	dig "$1"."$2" | grep -A1 'ANSWER SECTION:' | tail +2 | awk -v s="$1"  '{print "The subdomain " s  " is a " $4 " record and points to " $5}'
+}
+
+if [ $# -lt  2 ]
+then
+        for sub in $sds
+	do
+		conf "$sub" "$1"
+	done
+else
+	conf "$2" "$1"
+fi
