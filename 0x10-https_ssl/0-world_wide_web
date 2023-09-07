@@ -2,7 +2,7 @@
 # get ip for subdomain
 
 conf () {
-	dig "$1"."$2" | grep -A1 'ANSWER SECTION:' | tail +2 | awk -v s="$1"  '{print "The subdomain " s  " is a " $4 " record and points to " $5}'
+	dig "$1"."$2" | grep -A1 'ANSWER SECTION:' | tail -1 | awk -v s="$1"  '{print "The subdomain " s  " is a " $4 " record and points to " $5}'
 }
 
 if [ "$#" ==  1 ]
