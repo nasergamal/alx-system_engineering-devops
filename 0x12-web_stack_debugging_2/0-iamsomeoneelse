@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# use another user
+
+if [ "$#" == 1 ]
+then
+	sudo -H -u "$1" bash -c 'whoami'
+fi
