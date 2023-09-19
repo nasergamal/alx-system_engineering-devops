@@ -7,4 +7,6 @@ sed -i 's/80/8080/g' /etc/nginx/sites-enabled/default
 
 chmod 664 /etc/nginx/nginx.conf
 
+pkill apache2
+
 sudo -u nginx service nginx start
