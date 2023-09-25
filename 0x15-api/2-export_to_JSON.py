@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''access users todo list and create json file'''
-from sys import argv
 import json
+from sys import argv
 import urllib.request
 
 

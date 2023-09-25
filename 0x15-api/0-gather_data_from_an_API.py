@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''access users todo lists'''
-from sys import argv
 import json
+from sys import argv
 import urllib.request
 
 
@@ -24,5 +24,5 @@ if __name__ == '__main__':
             cm += 1
             cm_tasks.append(task['title'])
 
-    print(f'Employee {d["name"]} is done with tasks({cm}/{len(tasks)})')
-    [print(c) for c in cm_tasks]
+    print(f'Employee {d["name"]} is done with tasks({cm}/{len(tasks)}):')
+    [print("\t", c) for c in cm_tasks]
