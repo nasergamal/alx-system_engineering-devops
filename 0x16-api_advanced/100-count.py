@@ -28,4 +28,6 @@ def count_words(subreddit, word_list, word_count={}, after=""):
             s_word_list = dict(sorted(word_list.items(),
                                key=lambda x: (-x[1], x[0])))
             for k, v in s_word_list.items():
+                if v == 0:
+                    continue
                 print(f'{k}: {v}')
