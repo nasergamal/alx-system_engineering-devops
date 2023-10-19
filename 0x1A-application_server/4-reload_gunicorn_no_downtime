@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 # gracefull reload of gunicorn
-kill -HUP "$(ps auxf | grep gunicorn | awk '{print $2}')"
+pkill -HUP gunicorn
